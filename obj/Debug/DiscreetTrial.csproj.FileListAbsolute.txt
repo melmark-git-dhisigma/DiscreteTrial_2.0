@@ -1,0 +1,25 @@
+E:\Clients\Melmark\DataSheet Editor\DSComponentTester\DiscreetTrial\bin\Debug\DiscreetTrial.dll
+E:\Clients\Melmark\DataSheet Editor\DSComponentTester\DiscreetTrial\bin\Debug\DiscreetTrial.pdb
+E:\Clients\Melmark\DataSheet Editor\DSComponentTester\DiscreetTrial\obj\Debug\ResolveAssemblyReference.cache
+E:\Clients\Melmark\DataSheet Editor\DSComponentTester\DiscreetTrial\obj\Debug\DiscreetTrial.dll
+E:\Clients\Melmark\DataSheet Editor\DSComponentTester\DiscreetTrial\obj\Debug\DiscreetTrial.pdb
+G:\Phase2Tester\DSComponentTester\DiscreetTrial\bin\Debug\DiscreetTrial.dll
+G:\Phase2Tester\DSComponentTester\DiscreetTrial\bin\Debug\DiscreetTrial.pdb
+G:\Phase2Tester\DSComponentTester\DiscreetTrial\obj\Debug\DiscreetTrial.csprojResolveAssemblyReference.cache
+G:\Phase2Tester\DSComponentTester\DiscreetTrial\obj\Debug\DiscreetTrial.dll
+G:\Phase2Tester\DSComponentTester\DiscreetTrial\obj\Debug\DiscreetTrial.pdb
+G:\Melmark\DiscreetTrial\bin\Debug\DiscreetTrial.dll
+G:\Melmark\DiscreetTrial\bin\Debug\DiscreetTrial.pdb
+G:\Melmark\DiscreetTrial\obj\Debug\DiscreetTrial.csprojResolveAssemblyReference.cache
+G:\Melmark\DiscreetTrial\obj\Debug\DiscreetTrial.dll
+G:\Melmark\DiscreetTrial\obj\Debug\DiscreetTrial.pdb
+G:\Backup Dont Delete\DiscreetTrial\bin\Debug\DiscreetTrial.dll
+G:\Backup Dont Delete\DiscreetTrial\bin\Debug\DiscreetTrial.pdb
+G:\Backup Dont Delete\DiscreetTrial\obj\Debug\DiscreetTrial.csprojResolveAssemblyReference.cache
+G:\Backup Dont Delete\DiscreetTrial\obj\Debug\DiscreetTrial.dll
+G:\Backup Dont Delete\DiscreetTrial\obj\Debug\DiscreetTrial.pdb
+G:\Discrete\bin\Debug\DiscreetTrial.dll
+G:\Discrete\bin\Debug\DiscreetTrial.pdb
+G:\Discrete\obj\Debug\DiscreetTrial.csprojResolveAssemblyReference.cache
+G:\Discrete\obj\Debug\DiscreetTrial.dll
+G:\Discrete\obj\Debug\DiscreetTrial.pdb
