@@ -485,7 +485,7 @@ namespace DiscreetTrial
             {
                 if (!Double.IsNaN(sArray[i]))
                 {
-                if ((SuccessCount && (sArray[i] < sCheckFor / 100)) || (!SuccessCount && (sArray[i] > sCheckFor / 100)))
+                if ((SuccessCount && (sArray[i] < sCheckFor / 100)) || (!SuccessCount && (sArray[i] >= sCheckFor / 100)))
                 {
                     if (tempCount > maxCount)
                         maxCount = tempCount;
@@ -521,7 +521,7 @@ namespace DiscreetTrial
             {
                 if (sArray[i] != -9999)
                 {
-                    if ((SuccessCount && (Consavg < sCheckFor)) || (!SuccessCount && (Consavg > sCheckFor)))
+                    if ((SuccessCount && (Consavg < sCheckFor)) || (!SuccessCount && (Consavg >= sCheckFor)))
                     {
                         if (tempCount > maxCount)
                             maxCount = tempCount;
@@ -583,7 +583,7 @@ namespace DiscreetTrial
             int tempCount = 0;
             for (int i = sArray.Length - 1; i >= 0; i--)
             {
-                if ((SuccessCount && (sArray[i] < sCheckFor) || (sArray[i] == 0)) || (!SuccessCount && (sArray[i] > sCheckFor) || (sArray[i] == 0)))
+                if ((SuccessCount && (sArray[i] < sCheckFor) || (sArray[i] == 0)) || (!SuccessCount && (sArray[i] >= sCheckFor) || (sArray[i] == 0)))
                 {
                     if (tempCount > maxCount)
                         maxCount = tempCount;
@@ -726,7 +726,7 @@ namespace DiscreetTrial
             int tempCount = 0;
             for (int i = avgData.Length - 1; i >= 0; i--)
             {
-                if (avgData[i].PromptAverages[currentPrompt] > sCheckFor / 100)
+                if (avgData[i].PromptAverages[currentPrompt] >= sCheckFor / 100)
                 {
                     if (tempCount > maxCount)
                         maxCount = tempCount;
@@ -880,7 +880,7 @@ namespace DiscreetTrial
                 iStart = 0;
             for (int i = iStart; i < avgData.Length; i++)
             {
-                if (avgData[i].PromptAverages[currentPrompt] <= sCheckFor / 100)
+                if (avgData[i].PromptAverages[currentPrompt] < sCheckFor / 100)
                 {
                     maxCount++;
                 }
@@ -1121,11 +1121,11 @@ namespace DiscreetTrial
                 {
                     iIndCount++;
                 }
-                if (Data.TrialsData[i].AVGScore <= Data.MoveBackPercentAccuracy.BarCondition)
+                if (Data.TrialsData[i].AVGScore < Data.MoveBackPercentAccuracy.BarCondition)
                 {
                     iFailedAccuracyCount++;
                 }
-                if (Data.TrialsData[i].AVGIndependence <= Data.MoveBackPercentIndependence.BarCondition)
+                if (Data.TrialsData[i].AVGIndependence < Data.MoveBackPercentIndependence.BarCondition)
                 {
                     iFailedIndCount++;
                 }
