@@ -477,6 +477,80 @@ namespace DiscreetTrial
     }
     public static class Model
     {
+        public static int NoutofnMoveup(float[] sArray, float sCheckFor, int totaltrial)
+        {
+            int count = 0;
+            int startpos = 0;
+            if (sArray.Length > totaltrial)
+            {
+                startpos = sArray.Length - totaltrial;
+            }
+            else
+            {
+                startpos = 0;
+            }
+            for (int i = startpos; i < sArray.Length; i++)
+            {
+                if (sArray[i] >= sCheckFor)
+                {
+                    count++;
+                }
+            }
+                return count;
+        }
+        public static int NoutofnMovedown(float[] sArray, float sCheckFor, int totaltrial)
+        {
+            int count = 0;
+            int startpos = 0;
+            if (sArray.Length > totaltrial)
+            {
+                startpos = sArray.Length - totaltrial;
+            }
+            else
+            {
+                startpos = 0;
+            }
+            for (int i = startpos; i < sArray.Length; i++)
+            {
+                if (sArray[i] < sCheckFor)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private static int NoutofnMoveupCorrect(float[]  avgData, float sCheckFor, int iTrialCount)
+        {
+            int maxCount = 0;
+            int iStart = avgData.Length - iTrialCount;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = iStart; i < avgData.Length; i++)
+            {
+                if (avgData[i] >= sCheckFor)
+                {
+                    maxCount++;
+                }
+            }
+            return maxCount;
+        }
+        private static int NoutofnMovedownCorrectorIncorrect(float[] avgData, float sCheckFor, int iTrialCount)
+        {
+            int maxCount = 0;
+            int iStart = avgData.Length - iTrialCount;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = iStart; i < avgData.Length; i++)
+            {
+                if (avgData[i] < sCheckFor)
+                {
+                    maxCount++;
+                }
+            }
+            return maxCount;
+        }
+
         public static int ConsecutiveCount(float[] sArray, float sCheckFor, bool SuccessCount)
         {
             int maxCount = 0;
@@ -540,7 +614,10 @@ namespace DiscreetTrial
 
             //new code start
             float Consavgval = 0;
-            for (int i = 0; i < sArray.Length; i++)
+            int iStart = sArray.Length - TrialVal;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = iStart; i < sArray.Length; i++)
             {
                 Consavgval += sArray[i];
         }
@@ -601,7 +678,10 @@ namespace DiscreetTrial
         public static int ConsecutiveCountCorrectIncorrectAvg(float[] sArray, float sCheckFor, bool SuccessCount, int TrialVal)
         {
             float Consavgval = 0;
-            for (int i = 0; i < sArray.Length; i++)
+            int iStart = sArray.Length - TrialVal;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = iStart; i < sArray.Length; i++)
             {
                 Consavgval += sArray[i];
             }
@@ -655,7 +735,10 @@ namespace DiscreetTrial
         private static int ConsecutivePromptAvgCountCorrectAvg(TrialAvg[] avgData, float sCheckFor, string currentPrompt, int TrialVal)
         {
             float consavgval = 0;
-            for (int i = 0; i < avgData.Length; i++)
+            int iStart = avgData.Length - TrialVal;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = iStart; i < avgData.Length; i++)
             {
                 consavgval += avgData[i].Correct;
             }
@@ -674,8 +757,10 @@ namespace DiscreetTrial
             int maxCount = 0;
             int tempCount = 0;
             float Consavg = 0;
-
-            for (int i = avgData.Length - 1; i >= 0; i--)
+            int iStart = avgData.Length - maxTrial;
+            if (iStart < 0)
+                iStart = 0;
+            for (int i = avgData.Length - 1; i >= iStart; i--)
             {
                 if (!Double.IsNaN(avgData[i].PromptAverages[currentPrompt]))
                 {
@@ -684,7 +769,7 @@ namespace DiscreetTrial
             }
             Consavg = Consavg / maxTrial;
 
-            for (int i = avgData.Length - 1; i >= 0; i--)
+            for (int i = avgData.Length - 1; i >= iStart; i--)
             {
                 if (Consavg < sCheckFor / 100)
                 {
@@ -742,8 +827,11 @@ namespace DiscreetTrial
         }
         private static int MoveBackConsecutivePromptAvgCountNew(TrialAvg[] avgData, float sCheckFor, string currentPrompt,int TrialVal )
         {
+            int iStart = avgData.Length - TrialVal;
+            if (iStart < 0)
+                iStart = 0;
            float Consavgval = 0;
-            for (int i = 0; i < avgData.Length; i++)
+           for (int i = iStart; i < avgData.Length; i++)
             {
                 Consavgval += avgData[i].PromptAverages[currentPrompt];
             }
@@ -1113,40 +1201,47 @@ namespace DiscreetTrial
                 AVGCorrect[i] = Data.TrialsData[i].Correct;
                 AVGIncorrect[i] = Data.TrialsData[i].Incorrect;
 
-                if (Data.TrialsData[i].AVGScore >= Data.PercentAccuracy.BarCondition)
-                {
-                    iAccuracyCount++;
+                //if (Data.TrialsData[i].AVGScore >= Data.PercentAccuracy.BarCondition)
+                //{
+                //    iAccuracyCount++;
+                //}
+                //if (Data.TrialsData[i].AVGIndependence >= Data.PercentIndependence.BarCondition)
+                //{
+                //    iIndCount++;
+                //}
+                //if (Data.TrialsData[i].AVGScore < Data.MoveBackPercentAccuracy.BarCondition)
+                //{
+                //    iFailedAccuracyCount++;
+                //}
+                ////if (Data.TrialsData[i].AVGIndependence < Data.MoveBackPercentIndependence.BarCondition)
+                ////{
+                ////    iFailedIndCount++;
+                ////}
+                //if(Data.TrialsData[i].Correct >= Data.SetTotalCorrectMoveUp.BarCondition)
+                //{
+                //    iCorrectCount++;
+                //}
+                //if (Data.TrialsData[i].Correct < Data.SetTotalCorrectMoveBack.BarCondition && Data.TrialsData[i].Correct > 0)
+                //{
+                //    iFailedCorrectCount++;
+                //}
+                //if (Data.TrialsData[i].Incorrect < Data.SetTotalIncorrectMoveBack.BarCondition && Data.TrialsData[i].Incorrect > 0)
+                //{
+                //    iInCorrectCount++;
+                //}
                 }
-                if (Data.TrialsData[i].AVGIndependence >= Data.PercentIndependence.BarCondition)
-                {
-                    iIndCount++;
-                }
-                if (Data.TrialsData[i].AVGScore < Data.MoveBackPercentAccuracy.BarCondition)
-                {
-                    iFailedAccuracyCount++;
-                }
-                if (Data.TrialsData[i].AVGIndependence < Data.MoveBackPercentIndependence.BarCondition)
-                {
-                    iFailedIndCount++;
-                }
-                if(Data.TrialsData[i].Correct >= Data.SetTotalCorrectMoveUp.BarCondition)
-                {
-                    iCorrectCount++;
-                }
-                if (Data.TrialsData[i].Correct < Data.SetTotalCorrectMoveBack.BarCondition && Data.TrialsData[i].Correct > 0)
-                {
-                    iFailedCorrectCount++;
-                }
-                if (Data.TrialsData[i].Incorrect < Data.SetTotalIncorrectMoveBack.BarCondition && Data.TrialsData[i].Incorrect > 0)
-                {
-                    iInCorrectCount++;
-                }
-            }
+            iAccuracyCount = NoutofnMoveup(AVGScoreArray, Data.PercentAccuracy.BarCondition, Data.PercentAccuracy.TotalTrial);
+             iFailedAccuracyCount = NoutofnMovedown(AVGScoreArray, Data.MoveBackPercentAccuracy.BarCondition, Data.MoveBackPercentAccuracy.TotalTrial);
+             iIndCount = NoutofnMoveup(AVGIndependenceArray, Data.PercentIndependence.BarCondition, Data.PercentIndependence.TotalTrial);
+             iFailedIndCount = NoutofnMovedown(AVGIndependenceArray, Data.MoveBackPercentIndependence.BarCondition, Data.MoveBackPercentIndependence.TotalTrial);
+             iCorrectCount = NoutofnMoveupCorrect(AVGCorrect, Data.SetTotalCorrectMoveUp.BarCondition, Data.SetTotalCorrectMoveUp.TotalTrial);
+             iFailedCorrectCount = NoutofnMovedownCorrectorIncorrect(AVGCorrect, Data.SetTotalCorrectMoveBack.BarCondition, Data.SetTotalCorrectMoveBack.TotalTrial);
+             iInCorrectCount = NoutofnMovedownCorrectorIncorrect(AVGIncorrect, Data.SetTotalIncorrectMoveBack.BarCondition, Data.SetTotalIncorrectMoveBack.TotalTrial);
 
             iConsecutiveAccuracyCount = ConsecutiveCount(AVGScoreArray, Data.PercentAccuracy.BarCondition, true);
             iConsecutiveIndCount = ConsecutiveCount(AVGIndependenceArray, Data.PercentIndependence.BarCondition, true);
-            iConsecutiveFailureAccuracyCount = ConsecutiveCount(AVGScoreArray, Data.PercentAccuracy.BarCondition, false);
-            iConsecutiveFailureIndCount = ConsecutiveCount(AVGIndependenceArray, Data.PercentIndependence.BarCondition, false);
+            iConsecutiveFailureAccuracyCount = ConsecutiveCount(AVGScoreArray, Data.MoveBackPercentAccuracy.BarCondition, false);
+            iConsecutiveFailureIndCount = ConsecutiveCount(AVGIndependenceArray, Data.MoveBackPercentIndependence.BarCondition, false);
             iConsecutiveCorrectCount = ConsecutiveCountCorrectIncorrect(AVGCorrect, Data.SetTotalCorrectMoveUp.BarCondition, true);
             iConsecutiveFailureCorrectCount = ConsecutiveCountCorrectIncorrect(AVGCorrect, Data.SetTotalCorrectMoveBack.BarCondition, false);
             iConsecutiveFailureInCorrectCount = ConsecutiveCountCorrectIncorrect(AVGIncorrect, Data.SetTotalIncorrectMoveBack.BarCondition, false);
@@ -1296,7 +1391,7 @@ namespace DiscreetTrial
                             }
                             if (Data.SetTotalCorrectMoveUp.TotalTrial > 0)
                             {
-                                if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount)
+                                if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount && !Data.SetTotalCorrectMoveUp.ConsecutiveAverage)
                                 {
                                     bSetMove = false;
                                 }//--- [New Criteria] May 2020 --|SetTotalCorrectMoveUp|--(Start)-- //
@@ -1352,7 +1447,7 @@ namespace DiscreetTrial
                             }
                             if (Data.SetTotalCorrectMoveUp.TotalTrial > 0)
                             {
-                                if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount)
+                                if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount && !Data.SetTotalCorrectMoveUp.ConsecutiveAverage)
                                 {
                                     bSetMove = false;
                                 }//--- [New Criteria] May 2020 --|SetTotalCorrectMoveUp|--(Start)-- //
@@ -1409,7 +1504,7 @@ namespace DiscreetTrial
                         }
                         if (Data.SetTotalCorrectMoveUp.TotalTrial > 0)
                         {
-                            if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount)
+                            if (Data.SetTotalCorrectMoveUp.SuccessNeeded > iCorrectCount && !Data.SetTotalCorrectMoveUp.ConsecutiveAverage)
                             {
                                 bSetMove = false;
                             }//--- [New Criteria] May 2020 --|SetTotalCorrectMoveUp|--(Start)-- //
