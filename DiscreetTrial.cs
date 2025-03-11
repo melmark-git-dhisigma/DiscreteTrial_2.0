@@ -1373,6 +1373,10 @@ namespace DiscreetTrial
                                 {
                                     bSetMove = false;
                                 }
+                                else if ((Data.sCurrentLessonPrompt != Data.NoPromptsUsed[Data.NoPromptsUsed.Length - 1]) && ((Data.PercentAccuracy.SuccessNeeded == iAccuracyCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveAvgAccuracyCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveAccuracyCount)))
+                                {
+                                    bSetMove = false;
+                                }
                             }
                             if (Data.PercentIndependence.TotalTrial > 0)
                             {
@@ -1388,6 +1392,10 @@ namespace DiscreetTrial
                                 {
                                     bSetMove = false;
                                 }
+                                else if ((Data.sCurrentLessonPrompt != Data.NoPromptsUsed[Data.NoPromptsUsed.Length - 1]) && ((Data.PercentAccuracy.SuccessNeeded == iIndCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveAvgIndCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveIndCount)))
+                                {
+                                    bSetMove = false;
+                                }
                             }
                             if (Data.SetTotalCorrectMoveUp.TotalTrial > 0)
                             {
@@ -1400,6 +1408,10 @@ namespace DiscreetTrial
                                     bSetMove = false;
                                 }//--- [New Criteria] May 2020 --|SetTotalCorrectMoveUp|--(End)-- //
                                 else if (Data.SetTotalCorrectMoveUp.ConsecutiveSuccess && (Data.SetTotalCorrectMoveUp.SuccessNeeded > iConsecutiveCorrectCount))
+                                {
+                                    bSetMove = false;
+                                }
+                                else if ((Data.sCurrentLessonPrompt != Data.NoPromptsUsed[Data.NoPromptsUsed.Length - 1]) && ((Data.PercentAccuracy.SuccessNeeded == iCorrectCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveAvgCorrectCount) || (Data.PercentAccuracy.SuccessNeeded > iConsecutiveCorrectCount)))
                                 {
                                     bSetMove = false;
                                 }
